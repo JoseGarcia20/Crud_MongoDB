@@ -1,0 +1,370 @@
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Estudiante</title>
+
+<link rel="stylesheet" th:href="@{/css/estilos.css}">
+<link
+	th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css}"
+	rel="stylesheet"
+	integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+	crossorigin="anonymous">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+	href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Source+Serif+Pro&display=swap"
+	rel="stylesheet">
+</head>
+
+
+
+<body
+	class="container d-flex flex-column justify-content-center align-items-center">
+
+	<header id="header">
+
+		<div id="cajaIzquierda">
+			<div id="iconIzquierdo">
+				<h2>ICFES PRISMA</h2>
+			</div>
+
+			<div id="infoUser"></div>
+
+		</div>
+
+		<div id="iconDerecho">
+			<a th:href="@{/}"><img th:src="@{/img/salida.png}" height="40px"></a>
+		</div>
+	</header>
+
+
+	<main
+		class="d-flex justify-content-center flex-column align-items-center p-3 m-3">
+
+		<div
+			class="d-flex justify-content-center flex-column align-items-center p-3 m-3">
+
+		</div>
+		<div id="form">
+
+
+			<form th:action="@{/coordinador/guardar}" th:object="${estudiante}"
+				method="post"
+				class="d-flex flex-column p-5 g-3 needs-validation m-3">
+
+				<input type="hidden" th:field="*{id}">
+
+				<h4>Informacion:</h4>
+				<div class="mb-3 form-floating">
+
+					<input readonly type="text" class="form-control"
+						name="tipoDocumento" placeholder="Tipo Documento:"
+						th:field="*{tipoDocumento}"
+						th:errorclass="'form-control alert-danger'" /> <label
+						for="tipoDocumento" class="form-label p-3">Tipo Documento:
+					</label>
+				</div>
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control" id="documento"
+						name="documento" placeholder="Documento:" th:field="*{documento}">
+					<label for="documento" class="form-label p-3">Documento: </label>
+				</div>
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control" id="nombre"
+						name="nombre" placeholder="Nombre Completo:" th:field="*{nombre}">
+					<label for="nombre" class="form-label p-3">Nombre Completo:
+					</label>
+				</div>
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control" id="apellido"
+						name="apellido" placeholder="Apellido Completo:"
+						th:field="*{apellido}"> <label for="apellido"
+						class="form-label p-3">Apellido Completo: </label>
+				</div>
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control" id="correo"
+						name="correo" placeholder="Correo Electronico:"
+						th:field="*{correo}"> <label for="correo"
+						class="form-label p-3">Correo Electronico: </label>
+				</div>
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control" id="telefono"
+						name="telefono" placeholder="Numero Telefonico:"
+						th:field="*{telefono}"> <label for="telefono"
+						class="form-label p-3">Numero Telefonico: </label>
+				</div>
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control" id="clave"
+						name="clave" placeholder="Clave:" th:field="*{clave}"> <label
+						for="clave" class="form-label p-3">Clave: </label>
+				</div>
+				
+								<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						name="puntaje" placeholder="Puntaje:"
+						th:field="*{puntaje}"
+						th:errorclass="'form-control alert-danger'" /> <label
+						for="puntaje" class="form-label p-3">Puntaje: </label>
+				</div>
+				
+				<div class="">
+		        	<div th:if="${estudiante.puntaje} &gt;= 191 and ${estudiante.puntaje} &lt;= 300">
+						<p class="text-success">Nivel 4</p>
+					</div>
+					<div th:if="${estudiante.puntaje} &gt;= 156 and ${estudiante.puntaje} &lt;= 190">
+						<p class="text-warning">Nivel 3</p>
+					</div>
+					<div th:if="${estudiante.puntaje} &gt;= 126 and ${estudiante.puntaje} &lt;= 155">
+						<p class="text-primary">Nivel 2</p>
+					</div>
+					<div th:if="${estudiante.puntaje} &gt;= 0 and ${estudiante.puntaje} &lt;= 125">
+						<p class="text-danger">Nivel 1</p>
+					</div>
+				</div>
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						name="numeroRegistro" placeholder="Numero De Registro:"
+						th:field="*{numeroRegistro}"
+						th:errorclass="'form-control alert-danger'" /> <label
+						for="numeroRegistro" class="form-label p-3">Numero De
+						Registro: </label>
+				</div>
+
+				<div>
+					<p>-----------------------------------------------------------------</p>
+					<center>
+						<h4>Calificaciones</h4>
+					</center>
+					<p>-----------------------------------------------------------------</p>
+				</div>
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						id="pComunicacionEscrita" name="pComunicacionEscrita"
+						placeholder="Comunicacion Escrita:"
+						th:field="*{pComunicacionEscrita}"> <label
+						for="pComunicacionEscrita" class="form-label p-3">Comunicacion
+						Escrita: </label>
+				</div>
+
+				<div class="">
+		        	<div th:if="${estudiante.pComunicacionEscrita} &gt;= 191 and ${estudiante.pComunicacionEscrita} &lt;= 300">
+						<p class="text-success">Nivel 4</p>
+					</div>
+					<div th:if="${estudiante.pComunicacionEscrita} &gt;= 156 and ${estudiante.pComunicacionEscrita} &lt;= 190">
+						<p class="text-warning">Nivel 3</p>
+					</div>
+					<div th:if="${estudiante.pComunicacionEscrita} &gt;= 126 and ${estudiante.pComunicacionEscrita} &lt;= 155">
+						<p class="text-primary">Nivel 2</p>
+					</div>
+					<div th:if="${estudiante.pComunicacionEscrita} &gt;= 0 and ${estudiante.pComunicacionEscrita} &lt;= 125">
+						<p class="text-danger">Nivel 1</p>
+					</div>
+				</div>
+
+
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						id="pRazonamientoCuantitativo" name="pRazonamientoCuantitativo"
+						placeholder="Razonamiento Cuantitativo:"
+						th:field="*{pRazonamientoCuantitativo}"> <label
+						for="pRazonamientoCuantitativo" class="form-label p-3">Razonamiento
+						Cuantitativo: </label>
+				</div>
+				
+				<div class="">
+		        	<div th:if="${estudiante.pRazonamientoCuantitativo} &gt;= 191 and ${estudiante.pRazonamientoCuantitativo} &lt;= 300">
+						<p class="text-success">Nivel 4</p>
+					</div>
+					<div th:if="${estudiante.pRazonamientoCuantitativo} &gt;= 156 and ${estudiante.pRazonamientoCuantitativo} &lt;= 190">
+						<p class="text-warning">Nivel 3</p>
+					</div>
+					<div th:if="${estudiante.pRazonamientoCuantitativo} &gt;= 126 and ${estudiante.pRazonamientoCuantitativo} &lt;= 155">
+						<p class="text-primary">Nivel 2</p>
+					</div>
+					<div th:if="${estudiante.pRazonamientoCuantitativo} &gt;= 0 and ${estudiante.pRazonamientoCuantitativo} &lt;= 125">
+						<p class="text-danger">Nivel 1</p>
+					</div>
+				</div>
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						id="pLecturaCritica" name="pLecturaCritica"
+						placeholder="Lectura Crítica:" th:field="*{pLecturaCritica}">
+					<label for="pLecturaCritica" class="form-label p-3">Lectura
+						Crítica: </label>
+				</div>
+				
+				<div class="">
+		        	<div th:if="${estudiante.pLecturaCritica} &gt;= 191 and ${estudiante.pLecturaCritica} &lt;= 300">
+						<p class="text-success">Nivel 4</p>
+					</div>
+					<div th:if="${estudiante.pLecturaCritica} &gt;= 156 and ${estudiante.pLecturaCritica} &lt;= 190">
+						<p class="text-warning">Nivel 3</p>
+					</div>
+					<div th:if="${estudiante.pLecturaCritica} &gt;= 126 and ${estudiante.pLecturaCritica} &lt;= 155">
+						<p class="text-primary">Nivel 2</p>
+					</div>
+					<div th:if="${estudiante.pLecturaCritica} &gt;= 0 and ${estudiante.pLecturaCritica} &lt;= 125">
+						<p class="text-danger">Nivel 1</p>
+					</div>
+				</div>
+
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						id="pCompetenciasCiudadanas" name="pCompetenciasCiudadanas"
+						placeholder="Competencias Ciudadanas:"
+						th:field="*{pCompetenciasCiudadanas}"> <label
+						for="pCompetenciasCiudadanas" class="form-label p-3">Competencias
+						Ciudadanas: </label>
+				</div>
+
+				<div class="">
+		        	<div th:if="${estudiante.pCompetenciasCiudadanas} &gt;= 191 and ${estudiante.pCompetenciasCiudadanas} &lt;= 300">
+						<p class="text-success">Nivel 4</p>
+					</div>
+					<div th:if="${estudiante.pCompetenciasCiudadanas} &gt;= 156 and ${estudiante.pCompetenciasCiudadanas} &lt;= 190">
+						<p class="text-warning">Nivel 3</p>
+					</div>
+					<div th:if="${estudiante.pCompetenciasCiudadanas} &gt;= 126 and ${estudiante.pCompetenciasCiudadanas} &lt;= 155">
+						<p class="text-primary">Nivel 2</p>
+					</div>
+					<div th:if="${estudiante.pCompetenciasCiudadanas} &gt;= 0 and ${estudiante.pCompetenciasCiudadanas} &lt;= 125">
+						<p class="text-danger">Nivel 1</p>
+					</div>
+				</div>
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control" name="pIngles"
+						placeholder="Ingles:" th:field="*{pIngles}"
+						th:errorclass="'form-control alert-danger'" /> <label
+						for="pIngles" class="form-label p-3">Ingles: </label>
+				</div>
+
+			<div class="">
+		        	<div th:if="${estudiante.pIngles} &gt;= 191 and ${estudiante.pIngles} &lt;= 300">
+						<p class="text-success">Nivel 4</p>
+					</div>
+					<div th:if="${estudiante.pIngles} &gt;= 156 and ${estudiante.pIngles} &lt;= 190">
+						<p class="text-warning">Nivel 3</p>
+					</div>
+					<div th:if="${estudiante.pIngles} &gt;= 126 and ${estudiante.pIngles} &lt;= 155">
+						<p class="text-primary">Nivel 2</p>
+					</div>
+					<div th:if="${estudiante.pIngles} &gt;= 0 and ${estudiante.pIngles} &lt;= 125">
+						<p class="text-danger">Nivel 1</p>
+					</div>
+				</div>
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						name="pNivelIngles" placeholder="Puntaje Ingles:"
+						th:field="*{pNivelIngles}"
+						th:errorclass="'form-control alert-danger'" /> <label
+						for="pNivelIngles" class="form-label p-3">Puntaje Ingles:
+					</label>
+				</div>
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						id="pFormulacionProyectosIngenieria"
+						name="pFormulacionProyectosIngenieria"
+						placeholder="Formulación De Proyectos Ingenieria:"
+						th:field="*{pFormulacionProyectosIngenieria}"> <label
+						for="pFormulacionProyectosIngenieria" class="form-label p-3">Formulación
+						De Proyectos Ingenieria: </label>
+				</div>
+
+				<div class="">
+		        	<div th:if="${estudiante.pFormulacionProyectosIngenieria} &gt;= 191 and ${estudiante.pFormulacionProyectosIngenieria} &lt;= 300">
+						<p class="text-success">Nivel 4</p>
+					</div>
+					<div th:if="${estudiante.pFormulacionProyectosIngenieria} &gt;= 156 and ${estudiante.pFormulacionProyectosIngenieria} &lt;= 190">
+						<p class="text-warning">Nivel 3</p>
+					</div>
+					<div th:if="${estudiante.pFormulacionProyectosIngenieria} &gt;= 126 and ${estudiante.pFormulacionProyectosIngenieria} &lt;= 155">
+						<p class="text-primary">Nivel 2</p>
+					</div>
+					<div th:if="${estudiante.pFormulacionProyectosIngenieria} &gt;= 0 and ${estudiante.pFormulacionProyectosIngenieria} &lt;= 125">
+						<p class="text-danger">Nivel 1</p>
+					</div>
+				</div>
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						id="pPensamientoCientifico" name="pPensamientoCientifico"
+						placeholder="Pensamiento Cientifico Matematico y Estadistico:"
+						th:field="*{pPensamientoCientifico}"> <label
+						for="pPensamientoCientifico" class="form-label p-3">Pensamiento
+						Cientifico Matematico y Estadistico: </label>
+				</div>
+
+				<div class="">
+		        	<div th:if="${estudiante.pPensamientoCientifico} &gt;= 191 and ${estudiante.pPensamientoCientifico} &lt;= 300">
+						<p class="text-success">Nivel 4</p>
+					</div>
+					<div th:if="${estudiante.pPensamientoCientifico} &gt;= 156 and ${estudiante.pPensamientoCientifico} &lt;= 190">
+						<p class="text-warning">Nivel 3</p>
+					</div>
+					<div th:if="${estudiante.pPensamientoCientifico} &gt;= 126 and ${estudiante.pPensamientoCientifico} &lt;= 155">
+						<p class="text-primary">Nivel 2</p>
+					</div>
+					<div th:if="${estudiante.pPensamientoCientifico} &gt;= 0 and ${estudiante.pPensamientoCientifico} &lt;= 125">
+						<p class="text-danger">Nivel 1</p>
+					</div>
+				</div>
+
+				<div class="mb-3 form-floating">
+					<input readonly type="text" class="form-control"
+						id="pDisenoSoftware" name="pDisenoSoftware"
+						placeholder="Diseño de Software:" th:field="*{pDisenoSoftware}">
+					<label for="pDisenoSoftware" class="form-label p-3">Diseño
+						de Software: </label>
+				</div>
+
+				<div class="">
+		        	<div th:if="${estudiante.pDisenoSoftware} &gt;= 191 and ${estudiante.pDisenoSoftware} &lt;= 300">
+						<p class="text-success">Nivel 4</p>
+					</div>
+					<div th:if="${estudiante.pDisenoSoftware} &gt;= 156 and ${estudiante.pDisenoSoftware} &lt;= 190">
+						<p class="text-warning">Nivel 3</p>
+					</div>
+					<div th:if="${estudiante.pDisenoSoftware} &gt;= 126 and ${estudiante.pDisenoSoftware} &lt;= 155">
+						<p class="text-primary">Nivel 2</p>
+					</div>
+					<div th:if="${estudiante.pDisenoSoftware} &gt;= 0 and ${estudiante.pDisenoSoftware} &lt;= 125">
+						<p class="text-danger">Nivel 1</p>
+					</div>
+				</div>
+				<div class="d-flex mb-3 justify-content-center">
+					<a th:href="@{/coordinador/}"
+						style="background-color: #415A77; color: white;" class="btn">Salir</a>
+				</div>
+
+			</form>
+		</div>
+	</main>
+</body>
+</html>

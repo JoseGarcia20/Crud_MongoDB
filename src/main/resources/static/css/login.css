@@ -1,0 +1,65 @@
+    .body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+    }
+
+    .main {
+      flex: 1 0 auto;
+    }
+
+    .body {
+      background: #fff;
+    }
+
+    .input-field input[type=date]:focus + label,
+    .input-field input[type=text]:focus + label,
+    .input-field input[type=email]:focus + label,
+    .input-field input[type=password]:focus + label {
+      color: #415A77;
+    }
+
+    .input-field input[type=date]:focus,
+    .input-field input[type=text]:focus,
+    .input-field input[type=email]:focus,
+    .input-field input[type=password]:focus {
+      border-bottom: 2px solid #415A77;
+      box-shadow: none;
+    }
+    
+    
+#header{
+  background-color: #415A77;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  color: #fff;
+  width:100%;
+}
+
+#cajaIzquierda{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+    padding: 15px;
+}
+
+#iconDerecho{
+  margin: 5px;
+  background-repeat: no-repeat;
+  background-position: center center;
+    padding: 15px;
+}
+
+#iconIzquierdo{
+  background-repeat: no-repeat;
+  background-position: center center;
+    padding: 15px;
+}
+
+#infoUser{
+  color: white;
+  padding: 10px;
+}
+    
